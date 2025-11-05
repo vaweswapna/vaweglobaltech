@@ -79,15 +79,15 @@ export default function Navbar() {
             </div>
             
             {/* Text Container with Modern Design */}
-            <div className="relative hidden sm:block">
-              <div className="relative pl-1 pr-4 py-2 bg-white/40 backdrop-blur-md rounded-r-2xl border-l-4 border-[#00448a] shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:bg-white/60">
+            <div className="relative block">
+              <div className="relative pl-1 pr-2 sm:pr-4 py-2 bg-white/40 backdrop-blur-md rounded-r-2xl border-l-4 border-[#00448a] shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:bg-white/60">
                 <div className="flex flex-col leading-tight">
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-baseline gap-1 sm:gap-2">
                     <h1 
-                      className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-black leading-none whitespace-nowrap"
+                      className="text-base sm:text-xl md:text-xl lg:text-2xl font-black leading-none whitespace-nowrap max-w-[45vw] sm:max-w-[60vw] truncate"
                       style={{ 
                         fontFamily: '"Times New Roman", serif',
-                        letterSpacing: '0.1em',
+                        letterSpacing: '0.05em',
                         color: '#00448a',
                         fontWeight: 900
                       }}
@@ -95,10 +95,10 @@ export default function Navbar() {
                       VAWE
                     </h1>
                     {/* Diagonal accent line */}
-                    <div className="h-6 w-0.5 bg-gradient-to-b from-[#00448a] to-[#26ebe5] rotate-12"></div>
+                    <div className="hidden sm:block h-6 w-0.5 bg-gradient-to-b from-[#00448a] to-[#26ebe5] rotate-12"></div>
                   </div>
                   <span 
-                    className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-none whitespace-nowrap mt-0.5 tracking-wider"
+                    className="inline text-[9px] sm:text-xs md:text-sm lg:text-base font-semibold leading-none whitespace-nowrap mt-0.5 tracking-wider"
                     style={{ 
                       fontFamily: '"Times New Roman", serif',
                       letterSpacing: '0.15em',
@@ -144,16 +144,29 @@ export default function Navbar() {
         {open && (
           <div className="fixed inset-0 z-40" role="dialog" aria-modal="true">
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-            <div className="absolute top-[84px] right-0 h-[calc(100vh-84px)] w-80 sm:w-[28rem] pr-4" ref={menuRef}>
-              <div className="h-full bg-white/95 backdrop-blur-md gradient-border rounded-l-2xl px-4 py-4 flex flex-col">
+            <div className="absolute top-[84px] right-0 w-80 sm:w-[28rem] pr-4" ref={menuRef}>
+              <div className="max-h-[calc(100vh-120px)] h-auto bg-white/95 backdrop-blur-md gradient-border rounded-l-2xl px-4 py-3 flex flex-col overflow-auto">
+                {/* Drawer header with logo + title and close */}
                 <div className="flex items-center justify-between pb-2 border-b border-black/10">
-                  <span className="text-sm font-semibold text-neutral-800">Menu</span>
+                  <div className="flex items-center gap-2">
+                    <div className="relative h-8 w-8 flex items-center justify-center"
+                      style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00448a] via-[#00448a]/80 to-[#26ebe5]" />
+                      <img src="/img1.jpg" alt="VAWE logo" className="relative h-6 w-6 object-cover z-10"
+                        style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' }} />
+                    </div>
+                    <div className="leading-tight">
+                      <div className="text-sm font-extrabold" style={{ color: '#00448a' }}>VAWE</div>
+                      <div className="text-[10px] font-semibold tracking-wider" style={{ color: '#f56c53' }}>GLOBAL TECH</div>
+                    </div>
+                  </div>
                   <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-black/5">
                     <X className="h-5 w-5" />
                   </button>
                 </div>
-                <nav className="mt-3 flex-1 overflow-auto">
-                  <ul className="flex flex-col gap-4 py-4 text-lg">
+                <nav className="mt-2 flex-1">
+                  <ul className="flex flex-col gap-3 py-3 text-base">
                     <li onClick={() => setOpen(false)}><NavLink href="/" label="Home" /></li>
                     <li onClick={() => setOpen(false)}><NavLink href="/about" label="About Us" /></li>
                     <li onClick={() => setOpen(false)}><NavLink href="/services" label="Services" /></li>
