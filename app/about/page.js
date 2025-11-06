@@ -109,7 +109,7 @@ export default function About() {
   return (
     <div className="pt-28 bg-gradient-to-b from-white to-neutral-50">
       {/* Hero */}
-      <section className="relative w-full px-6 py-12 md:py-16 text-center" style={{ background: 'var(--vawe-bg-gradient)' }}>
+      <section className="relative w-full px-6 py-8 md:py-10 text-center" style={{ background: 'var(--vawe-bg-gradient)' }}>
         <motion.h1
           variants={fadeUp}
           initial="hidden"
@@ -143,7 +143,7 @@ export default function About() {
           initial="hidden"
           animate="visible"
           custom={0.2}
-          className="mt-6 max-w-3xl mx-auto text-lg leading-relaxed"
+          className="mt-4 max-w-3xl mx-auto text-lg leading-relaxed"
           style={{ color: '#ffffff' }}
         >
           We are a next-gen IT company blending creativity and engineering to
@@ -152,8 +152,8 @@ export default function About() {
       </section>
 
       {/* Certifications and Clients */}
-      <section className="w-full px-6 mt-20">
-        <div className="container mx-auto grid md:grid-cols-2 gap-6">
+      <section className="w-full px-6 mt-8 md:mt-12">
+        <div className="container mx-auto grid md:grid-cols-2 gap-4 md:gap-6">
           <div className="relative overflow-hidden rounded-2xl border-2 p-6 shadow-lg backdrop-blur-sm" style={{ borderColor: 'var(--vawe-teal)', backgroundColor: 'var(--vawe-beige)/10' }}>
             <h3 className="text-xl font-semibold" style={{ color: 'var(--vawe-navy)' }}>Certifications</h3>
             <p className="mt-2 text-neutral-700">Certified by <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>ISO</span>, <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>MSME</span>, <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>APSCHE</span>, and <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>AICTE</span> as <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>VAWE</span>.</p>
@@ -177,10 +177,10 @@ export default function About() {
       </section>
 
       {/* Mission / Vision / Story - redesigned */}
-      <section className="w-full px-6 mt-20">
-        <div className="container mx-auto grid md:grid-cols-3 gap-8">
+      <section className="w-full px-6 mt-8 md:mt-12">
+        <div className="container mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
           {[
-          { title: "Our Mission", text: "Empower brands with beautiful, performant software and design.", icon: Target, ring: "from-[var(--vawe-coral)] to-[var(--vawe-beige)]" },
+          { title: "Our Mission", text: "Empower brands with beautiful, performance software and design.", icon: Target, ring: "from-[var(--vawe-coral)] to-[var(--vawe-beige)]" },
           { title: "Our Vision", text: "A world where digital interactions feel fluid, elegant, and human.", icon: Eye, ring: "from-[var(--vawe-teal)] to-[var(--vawe-navy)]" },
           { title: "Our Story", text: "Born in 2025, VAWE GlobalTech unites design excellence with engineering rigor.", icon: BookOpen, ring: "from-[var(--vawe-beige)] to-[var(--vawe-coral)]" },
         ].map((card, i) => (
@@ -191,7 +191,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
             whileHover={{ y: -6, scale: 1.02 }}
-            className="relative rounded-3xl p-7 bg-white/80 border border-white/50 shadow-lg backdrop-blur-sm overflow-hidden"
+            className="relative rounded-3xl p-5 md:p-7 bg-white/80 border border-white/50 shadow-lg backdrop-blur-sm overflow-hidden"
           >
             <div className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${card.ring} blur-3xl opacity-40`} />
             <div className="relative flex items-start gap-4">
@@ -212,10 +212,10 @@ export default function About() {
 
       {/* Overview */}
       {/* Company Overview - split card */}
-      <section className="w-full px-6 mt-20">
+      <section className="w-full px-6 mt-8 md:mt-12">
         <div className="container mx-auto">
           <div className="relative rounded-3xl overflow-hidden border-2 shadow-xl backdrop-blur-sm grid md:grid-cols-2" style={{ borderColor: 'var(--vawe-teal)', backgroundColor: 'rgba(254,203,157,0.15)' }}>
-          <div className="p-8 md:p-10">
+          <div className="p-6 md:p-8">
             <motion.h2
               variants={fadeUp}
               initial="hidden"
@@ -263,10 +263,10 @@ export default function About() {
       </section>
 
       {/* Core Values */}
-      <section className="w-full px-6 mt-20">
+      <section className="w-full px-6 mt-8 md:mt-12">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-4" style={{ color: '#00448a' }}>Core Values</h2>
-          <div className="mt-8 flex flex-wrap justify-center gap-6 px-4">
+          <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-3 md:mb-4" style={{ color: '#00448a' }}>Core Values</h2>
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-6 px-4">
           {[
             { title: "Innovation", desc: "Our innovations aim to create transformations that give businesses a competitive edge.", icon: Lightbulb, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=600&fit=crop" },
             { title: "Insight", desc: "We foresee trends and meet needs through vision, skill, and collective intelligence.", icon: Eye, image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=600&fit=crop" },
@@ -374,14 +374,14 @@ export default function About() {
       </section>
 
       {/* Milestones - Timeline Design */}
-      <section className="w-full px-6 mt-20" style={{ backgroundColor: 'rgba(254,203,157,0.1)' }}>
-        <div className="container mx-auto py-16">
-          <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-16" style={{ color: '#00448a' }}>Milestones</h2>
+      <section className="w-full px-6 mt-8 md:mt-12" style={{ backgroundColor: 'rgba(254,203,157,0.1)' }}>
+        <div className="container mx-auto py-8 md:py-12">
+          <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-8 md:mb-12" style={{ color: '#00448a' }}>Milestones</h2>
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full hidden md:block" style={{ background: 'linear-gradient(to bottom, var(--vawe-teal), var(--vawe-coral), var(--vawe-navy), var(--vawe-beige), var(--vawe-teal))', height: '100%' }}></div>
             
-            <div className="space-y-12">
+            <div className="space-y-8 md:space-y-10">
               {[
                 { year: "2016", title: "Founded", desc: "VAWE starts with a mission to unite design and engineering.", color: 'var(--vawe-coral)' },
                 { year: "2018", title: "50+ Projects", desc: "First wave of production apps across multiple industries.", color: 'var(--vawe-teal)' },
@@ -401,7 +401,7 @@ export default function About() {
                   <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                     <motion.div
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="relative rounded-2xl p-6 shadow-xl backdrop-blur-sm border-2" 
+                      className="relative rounded-2xl p-5 md:p-6 shadow-xl backdrop-blur-sm border-2" 
                       style={{ 
                         borderColor: m.color,
                         backgroundColor: 'rgba(255,255,255,0.9)'
@@ -435,13 +435,13 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="w-full px-6 mt-20">
+      <section className="w-full px-6 mt-8 md:mt-12 pb-8 md:pb-12">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 font-[var(--font-orbitron)]" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+          <h2 className="text-3xl font-bold mb-6 md:mb-8 font-[var(--font-orbitron)]" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
             Meet the Team
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {team.map((m, i) => (
             <motion.div
               key={m.name}

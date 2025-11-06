@@ -10,12 +10,12 @@ function ServiceBlock({ title, copy, bullets = [], image, reverse = false }) {
   }, []);
   
   return (
-    <section className="relative py-16">
+    <section className="relative py-8 md:py-12">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <span className={`${reverse ? "-right-24" : "-left-24"} -top-16 absolute h-48 w-48 rounded-full bg-linear-to-br from-violet-400/25 to-fuchsia-400/25 blur-3xl`} />
         <span className={`${reverse ? "-left-24" : "-right-24"} -bottom-16 absolute h-40 w-40 rounded-full bg-linear-to-tr from-cyan-400/20 to-blue-400/20 blur-3xl`} />
       </div>
-      <div className={`mx-auto max-w-6xl px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${reverse ? "md:[&>div:first-child]:order-2" : ""}`}>
+      <div className={`mx-auto max-w-6xl px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center ${reverse ? "md:[&>div:first-child]:order-2" : ""}`}>
         <motion.div 
           initial={false} 
           animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} 
@@ -149,13 +149,13 @@ export default function Services() {
       
 
       {/* Intro / Overview */}
-      <section className="w-full px-6 mt-10">
+      <section className="w-full px-6 mt-[-10px] md:mt-4 pb-4 md:pb-6">
         <div className="container mx-auto">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
             Our Services
           </motion.h1>
-          <div className="mt-3 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
-          <p className="mt-4 text-neutral-700 max-w-3xl">
+          <div className="mt-2 md:mt-3 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
+          <p className="mt-3 md:mt-4 text-neutral-700 max-w-3xl">
             We're a full‑service digital agency helping businesses grow online — from website design and e‑commerce
             development to SEO, marketing, hosting, and branding. Whatever your digital need, we've got you covered.
           </p>
@@ -163,8 +163,8 @@ export default function Services() {
       </section>
 
       {/* Services - 3 column hover reveal */}
-      <section className="w-full px-6 mt-10">
-        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl">
+      <section className="w-full px-6 mt-4 md:mt-8 pb-4 md:pb-6">
+        <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3 lg:gap-4 max-w-7xl">
           {services.map((s, idx) => {
             const isActive = activeService === idx;
             const borderColor = themeColors[idx];
@@ -182,8 +182,8 @@ export default function Services() {
                 style={{ border: `3px solid ${borderColor}` }}
               >
                 {/* title layer - hidden on mobile when active, hidden on desktop hover */}
-                <div className={`absolute inset-0 grid place-items-center p-6 transition-opacity duration-400 md:group-hover:opacity-0 z-10 ${isActive ? 'opacity-0 md:opacity-100' : 'opacity-100'}`}>
-                  <h3 className="text-lg md:text-xl font-semibold text-center" style={{ color: 'var(--vawe-navy)' }}>
+                <div className={`absolute inset-0 grid place-items-center p-4 md:p-6 transition-opacity duration-400 md:group-hover:opacity-0 z-10 ${isActive ? 'opacity-0 md:opacity-100' : 'opacity-100'}`}>
+                  <h3 className="text-sm md:text-xl lg:text-base font-semibold text-center" style={{ color: 'var(--vawe-navy)' }}>
                     {s.title}
                   </h3>
                 </div>
@@ -204,10 +204,10 @@ export default function Services() {
       </section>
 
       {/* Services Video Showcase */}
-      <section className="w-full px-6 mt-10">
+      <section className="w-full px-6 mt-6 md:mt-8 pb-4 md:pb-6">
         <div className="container mx-auto">
-          <h3 className="text-2xl md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Service Demos</h3>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="text-3xl md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Service Demos</h3>
+          <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {/* Left: player and heading */}
           <div className="md:col-span-2">
             <h4 className="text-lg font-semibold text-neutral-900">{currentVideo.title}</h4>
@@ -278,12 +278,12 @@ export default function Services() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-14">
+      <section className="py-8 md:py-10">
         <div className="w-full px-6">
           <div className="container mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Why Choose VAWE GlobalTech</h3>
-            <div className="mt-3 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
-            <div className="relative mt-6 overflow-hidden py-2">
+            <div className="mt-2 md:mt-3 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
+            <div className="relative mt-4 md:mt-6 overflow-hidden py-2">
             {/* single track with duplicated items for seamless loop (no gap) */}
             <div className="vawe-marquee flex whitespace-nowrap will-change-transform">
               {[...[
@@ -331,10 +331,10 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-12">
+      <section className="py-8 md:py-10">
         <div className="w-full px-6">
           <div className="container mx-auto">
-            <div className="rounded-2xl px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4" style={{ backgroundColor: 'rgba(8,123,123,0.1)', border: '2px solid var(--vawe-teal)' }}>
+            <div className="rounded-2xl px-4 md:px-6 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4" style={{ backgroundColor: 'rgba(8,123,123,0.1)', border: '2px solid var(--vawe-teal)' }}>
               <p className="text-neutral-800 font-semibold">Ready to grow your business online? Let's discuss your project today.</p>
               <div className="flex gap-2">
                 <a href="/contact" className="px-5 py-2 rounded-full font-semibold text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition" style={{ backgroundColor: 'var(--vawe-teal)' }}>Get Free Consultation</a>
@@ -345,13 +345,13 @@ export default function Services() {
         </div>
       </section>
       {/* Development Process - moved above footer */}
-      <section className="w-full px-6 mt-12">
-        <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <section className="w-full px-6 mt-6 md:mt-8 pb-6 md:pb-8">
+        <div className="container mx-auto grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold font-(--font-orbitron)" style={{ color: 'var(--vawe-navy)' }}>Development Process</h1>
-            <p className="mt-3 text-neutral-700 text-lg">A clear, collaborative, and quality‑driven approach from planning to launch.</p>
-            <div className="mt-4 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
-            <ol className="mt-6 space-y-3">
+            <p className="mt-2 md:mt-3 text-neutral-700 text-lg">A clear, collaborative, and quality‑driven approach from planning to launch.</p>
+            <div className="mt-3 md:mt-4 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
+            <ol className="mt-4 md:mt-6 space-y-2 md:space-y-3">
               {[
                 { num: 1, title: "Discovery & Planning", desc: "Gather requirements, define scope, timelines, and success metrics.", color: 'var(--vawe-coral)' },
                 { num: 2, title: "UX/UI Design", desc: "Wireframes, visual design system, and accessible component library.", color: 'var(--vawe-teal)' },

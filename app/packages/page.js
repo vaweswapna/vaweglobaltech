@@ -111,12 +111,12 @@ export default function Packages() {
               VAWE
             </motion.div>
           </div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl pt-2 md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-3xl pt-2 md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
             Packages
           </motion.h1>
-          <p className="mt-4 text-neutral-700 max-w-3xl">Choose a package that fits your stage. Every option blends our glassy, futuristic look with strong foundations. No prices shown — we tailor scope to your needs.</p>
+          <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 max-w-3xl">Choose a package that fits your stage. Every option blends our glassy, futuristic look with strong foundations. No prices shown — we tailor scope to your needs.</p>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {packages.map((p, i) => (
               <motion.div
                 key={p.name}
@@ -133,16 +133,16 @@ export default function Packages() {
                 tabIndex={0}
                 className={`pkg-card pkg-${p.variant} gradient-border rounded-2xl overflow-hidden ${zoomedByName[p.name] ? "cursor-zoom-in" : "cursor-zoom-out"}`}
               >
-                <div className="glass p-6 h-full flex flex-col">
+                <div className="glass p-4 md:p-6 h-full flex flex-col">
                   <div className="pkg-top" style={{ backgroundColor: p.color }} />
-                  <div className="flex items-center gap-3 mt-2">
+                  <div className="flex items-center gap-2 md:gap-3 mt-2">
                     <div className="icon-badge" style={{ backgroundColor: p.color }}>
-                      <img src={`/${p.icon}`} alt="" width={22} height={22} loading="lazy" />
+                      <img src={`/${p.icon}`} alt="" className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]" loading="lazy" />
                     </div>
-                    <h3 className="text-lg font-semibold" style={{ color: 'var(--vawe-navy)' }}>{p.name}</h3>
+                    <h3 className="text-base md:text-lg font-semibold" style={{ color: 'var(--vawe-navy)' }}>{p.name}</h3>
                   </div>
-                  <p className="text-neutral-700 text-sm mt-2">{p.subtitle}</p>
-                  <ul className="mt-4 space-y-2 text-sm text-neutral-700">
+                  <p className="text-neutral-700 text-xs md:text-sm mt-2">{p.subtitle}</p>
+                  <ul className="mt-3 md:mt-4 space-y-1.5 md:space-y-2 text-xs md:text-sm text-neutral-700">
                     {p.points.map((pt) => (
                       <li key={pt} className="flex items-start gap-2">
                         <span className="mt-1 inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: p.color }} />
@@ -150,8 +150,8 @@ export default function Packages() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 pt-4">
-                    <a href="/contact" className="btn-primary btn-ring px-4 py-2 rounded-full text-sm font-semibold hover:-translate-y-px transition" style={{ backgroundColor: p.color, color: '#fff' }}>Discuss Package</a>
+                  <div className="mt-4 pt-3 md:mt-6 md:pt-4">
+                    <a href="/contact" className="btn-primary btn-ring px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold hover:-translate-y-px transition" style={{ backgroundColor: p.color, color: '#fff' }}>Discuss Package</a>
                   </div>
                 </div>
               </motion.div>

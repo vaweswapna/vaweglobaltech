@@ -61,13 +61,13 @@ const products = [
 export default function Products() {
   return (
     <div className="pt-28">
-      <section className="w-full px-6">
+      <section className="w-full px-6 mt-2 md:mt-4">
         <div className="container mx-auto">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
             Products
           </motion.h1>
-          <p className="mt-5 text-neutral-700 max-w-3xl">Carefully designed offerings to match your stage and goals. Mix gradients and glass to deliver modern, luxurious interfaces.</p>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <p className="mt-3 md:mt-5 text-neutral-700 max-w-3xl">Carefully designed offerings to match your stage and goals. Mix gradients and glass to deliver modern, luxurious interfaces.</p>
+          <div className="mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, i) => (
               <motion.div
                 key={p.title}

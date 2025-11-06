@@ -71,7 +71,7 @@ export default function DigitalMarketing() {
         // All headings are black, regardless of card color
         const headingColor = '#000000';
         return (
-        <section key={s.title} className="py-8">
+        <section key={s.title} className="py-4 md:py-8">
           <div className="w-full px-6">
             <div className="container mx-auto max-w-6xl">
               <div className={`relative grid md:grid-cols-2 gap-0 overflow-hidden rounded-2xl shadow-xl ${s.reverse ? 'md:grid-flow-dense' : ''}`} style={{ background: 'linear-gradient(135deg, #ffffff 0%, #fef9f5 100%)' }}>
