@@ -12,11 +12,11 @@ import Showcase from "./components/Showcase";
 export default function Home() {
   const heroRef = useRef(null);
   const words = [
-    "Web Apps  ",
-    "Mobile Apps  ",
-    "Cloud Platforms  ",
-    "AI Solutions  ",
-    "E-Commerce  ",
+    "Web Apps ",
+    "Mobile Apps ",
+    "Cloud Platforms ",
+    "AI Solutions ",
+    "E-Commerce ",
   ];
   const [typed, setTyped] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -27,7 +27,7 @@ export default function Home() {
     {
       title: "Software Development",
       subtitle:
-        "Custom applications engineered for scale and performance. We architect robust backends, craft clean APIs, and deliver reliable frontends. Our process emphasizes code quality, reviews, and automated testing for long-term maintainability.",
+        "Custom applications for scale and performance. We architect robust backends,  clean APIs, and deliver reliable frontends. Our process emphasizes code quality, reviews, and automated testing for long-term maintainability.",
       img: "/softwareimg.jpg",
     },
     {
@@ -202,25 +202,25 @@ export default function Home() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[92vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[80vh] sm:min-h-[92vh] flex items-center justify-center overflow-hidden"
       >
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12] sm:scale-100"
         >
           <source src="/video.mp4" type="video/mp4" />
         </video>
 
-        <div className="container mx-auto px-6 py-28 relative z-10">
+        <div className="container mx-auto px-6 py-12 sm:py-16 relative z-10">
           <div className="text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-(--font-orbitron) text-5xl sm:text-6xl md:text-7xl leading-tight font-extrabold"
+              className="font-(--font-orbitron) text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold"
               style={{
                 color: "#ffffff",
                 textShadow:
@@ -230,7 +230,7 @@ export default function Home() {
               Building Digital Brilliance
             </motion.h1>
 
-            <div className="mt-8 text-3xl md:text-4xl font-(--font-raleway) px-4 py-2 rounded-lg bg-black/8 backdrop-blur-lg border border-white/20 inline-block">
+            <div className="mt-4 text-xl sm:text-2xl md:text-3xl font-(--font-raleway) px-4 py-2 rounded-lg bg-black/8 backdrop-blur-lg border border-white/20 inline-block">
               <span className="font-bold text-white">We Build </span>
               <span
                 className="font-bold"
@@ -242,24 +242,24 @@ export default function Home() {
               >
                 {typed}
               </span>
-              <span className="ml-1 inline-block w-[10px] h-[1.2em] align-middle bg-white animate-pulse" />
+              <span className="ml-1 inline-block w-[8px] sm:w-[10px] h-[1.2em] align-middle bg-white animate-pulse" />
             </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="mt-10 flex items-center justify-center gap-4"
+              className="mt-5 flex items-center justify-center gap-3 sm:gap-4"
             >
               <a
                 href="#services"
-                className="px-6 py-3 rounded-full font-semibold bg-white text-black hover:bg-transparent hover:text-white border-2 border-transparent hover:border-white transition"
+                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-sm sm:text-base bg-white text-black hover:bg-transparent hover:text-white border-2 border-transparent hover:border-white transition"
               >
                 Get Started
               </a>
               <a
                 href="/contact"
-                className="px-6 py-3 rounded-full font-semibold"
+                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-sm sm:text-base"
                 style={{ backgroundColor: "var(--vawe-coral)", color: "#000" }}
               >
                 Let's Talk
@@ -267,15 +267,23 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-black/10 to-black/30 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-black/10 to-black/30 pointer-events-none"></div>
       </section>
 
       {/* Services Slider */}
-      <section id="services" className="relative z-10 py-0">
+      <section id="services" className="relative z-10 py-4 md:py-0 bg-[#fef9f5]">
         <div className="w-full">
+          {/* Fixed Title */}
+          <div className="text-center py-4 md:py-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-(--font-orbitron) text-[var(--vawe-navy)] mb-2 md:mb-3">
+              What We Do
+            </h2>
+          </div>
+          
+          {/* Sliding Content Container */}
           <div
             ref={containerRef}
-            className="relative w-full h-[75vh] md:h-[85vh] overflow-hidden bg-[#fef9f5] shadow-[0_-10px_30px_-10px_rgba(0,0,0,0.1)]"
+            className="relative w-full min-h-[550px] md:h-[55vh] overflow-hidden shadow-[0_-10px_30px_-10px_rgba(0,0,0,0.1)]"
           >
             {extendedProvides.map((s, i) => {
               const isVisible = i === provideIdx;
@@ -285,25 +293,40 @@ export default function Home() {
                 key={`${s.title}-${i}`}
                 className={`absolute inset-0 ${
                   isMounted && isTransitioning
-                    ? "transition-transform duration-700 ease-in-out"
+                    ? "transition-transform duration-700 ease-in-out  "
                     : ""
                 }`}
                 style={{
                   transform: `translateX(${translateX}%)`,
+                  // marginTop: '-250px',
                   willChange: isMounted ? 'transform' : 'auto',
+                  // marginBottom: '-200px',
                 }}
               >
-                <div className="absolute inset-0 flex flex-col items-center py-20">
-                  <h2 className="text-3xl md:text-5xl font-bold font-(--font-orbitron) text-[var(--vawe-navy)] mb-8 text-center">
-                    What We Do
-                  </h2>
+                <div className="absolute inset-0 flex flex-col items-center justify-center py-4 md:py-8">
+                  <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 items-center flex-1">
+                    {/* Image - shown first on mobile, right on desktop */}
+                    <div className="order-1 md:order-2 md:col-span-3 w-full">
+                      <div
+                        className="relative w-full h-[220px] sm:h-[280px] md:h-[45vh] rounded-xl overflow-hidden border border-black/10 shadow-2xl mx-auto max-w-md md:max-w-none"
+                        style={{
+                          boxShadow:
+                            "0 20px 50px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.1)",
+                        }}
+                      >
+                        <img
+                          src={s.img}
+                          alt={s.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
 
-                  <div className="container mx-auto px-6 grid md:grid-cols-5 gap-8 items-center flex-1">
                     {/* Left: content */}
-                    <div className="text-neutral-900 md:col-span-2">
-                      <div className="mt-6">
+                    <div className="order-2 md:order-1 text-neutral-900 md:col-span-2">
+                      <div className="mt-2 md:mt-4">
                         <span
-                          className="inline-block px-6 py-3 text-xl md:text-2xl font-bold rounded-lg shadow-lg"
+                          className="inline-block px-4 py-2 sm:px-6 sm:py-3 text-lg sm:text-xl md:text-2xl font-bold rounded-lg shadow-lg"
                           style={{
                             background:
                               "linear-gradient(135deg, #f56c53, #ff8c6e)",
@@ -314,12 +337,12 @@ export default function Home() {
                         </span>
                       </div>
                       <p
-                        className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-black"
+                        className="mt-2 md:mt-3 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-black"
                       >
                         {s.subtitle}
                       </p>
 
-                      <div className="mt-6 flex gap-3">
+                      <div className="mt-3 md:mt-4 mb-8 md:mb-12 flex gap-3">
                         <button
                           onClick={() => setProvideIdx((prev) => prev - 1)}
                           className="px-4 py-2 rounded-full border transition"
@@ -347,23 +370,6 @@ export default function Home() {
                         </button>
                       </div>
                     </div>
-
-                    {/* Right: image */}
-                    <div className="hidden md:block md:col-span-3">
-                      <div
-                        className="relative w-full h-[50vh] md:h-[45vh] rounded-xl overflow-hidden border border-black/10 shadow-2xl"
-                        style={{
-                          boxShadow:
-                            "0 20px 50px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.1)",
-                        }}
-                      >
-                        <img
-                          src={s.img}
-                          alt={s.title}
-                          className="absolute inset-0 w-full h-full object-cover hidden md:block"
-                        />
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -371,7 +377,7 @@ export default function Home() {
             })}
 
             {/* Pagination dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
               {provides.map((_, i) => {
                 const isActive =
                   i + 1 === provideIdx ||
@@ -394,10 +400,10 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16">
+      <section className="relative py-8 md:py-10">
         <div className="container mx-auto px-6">
           <div
-            className="rounded-2xl px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white"
+            className="rounded-2xl px-6 py-6 md:px-8 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-white"
             style={{ background: "var(--vawe-bg-gradient)" }}
           >
             <div>
