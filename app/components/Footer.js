@@ -5,6 +5,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-8 md:mt-12 w-full">
+    
       <div className="w-full px-4 sm:px-6">
         <div className="h-[2px] w-full grad-ring rounded-full opacity-50 mb-4 md:mb-6" />
         <div className="container mx-auto glass gradient-border rounded-2xl px-4 sm:px-6 py-6 md:py-8">
