@@ -1,7 +1,19 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  Home,
+  Info,
+  Layers,
+  Box,
+  Package,
+  Megaphone,
+  GraduationCap,
+  Mail,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 
@@ -10,94 +22,70 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const NavLink = ({ href, label }) => {
+  const links = [
+    { href: "/", label: "Home", description: "Overview", Icon: Home },
+    { href: "/about", label: "About", description: "Our Story", Icon: Info },
+    { href: "/services", label: "Services", description: "What We Do", Icon: Layers },
+    { href: "/products", label: "Products", description: "Solutions", Icon: Box },
+    { href: "/packages", label: "Packages", description: "Plans", Icon: Package },
+    { href: "/digital-marketing", label: "Digital Marketing", description: "Campaigns", Icon: Megaphone },
+    { href: "/institutes", label: "Institutes", description: "Learning", Icon: GraduationCap },
+    { href: "/contact", label: "Contact", description: "Connect", Icon: Mail },
+  ];
+
+  const NavLink = ({ href, label, Icon }) => {
     const active = pathname === href || (href === "/#services" && pathname === "/");
     return (
       <Link
         href={href}
-        className={`relative px-3 py-2 rounded-md transition group ${active ? "text-neutral-900" : "text-neutral-700 hover:text-neutral-900"}`}
+        className={`group relative inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition ${
+          active ? "text-slate-900" : "text-slate-600 hover:text-slate-900"
+        }`}
       >
-        <span className="relative z-10">{label}</span>
-        <span className="absolute left-0 right-0 -bottom-1 h-[2px] grad-ring rounded-full opacity-0 group-hover:opacity-100 transition" />
-        <span className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition neon-shadow"></span>
+        <Icon
+          className={`h-4 w-4 transition ${
+            active ? "text-slate-900" : "text-slate-400 group-hover:text-slate-600"
+          }`}
+        />
+        <span>{label}</span>
+        <span
+          className={`absolute inset-x-2 bottom-1 h-[2px] rounded-full transition ${
+            active ? "bg-slate-900" : "bg-transparent group-hover:bg-slate-300"
+          }`}
+        />
       </Link>
     );
   };
 
-  const MenuButton = ({ href, label }) => {
+  const MenuButton = ({ href, label, Icon }) => {
     const active = pathname === href || (href === "/#services" && pathname === "/");
     return (
-      <Link
-        href={href}
-        className="group relative block w-full"
-        style={{ fontFamily: 'Times New Roman, serif' }}
-      >
+      <Link href={href} className="block" style={{ fontFamily: "Times New Roman, serif" }}>
         <button
           type="button"
-          className={`relative w-full px-6 py-4 text-left font-semibold text-base rounded-lg transition-all duration-200 ease-in-out ${
+          className={`relative flex w-full items-center justify-between gap-3 rounded-xl px-1 py-3 text-left text-base font-semibold transition ${
             active
-              ? "bg-[#00448a] text-white shadow-lg shadow-[#00448a]/30 border-2 border-[#00448a] transform scale-[0.98]"
-              : "bg-white text-neutral-700 border-2 border-neutral-300 shadow-md hover:bg-[#00448a] hover:text-white hover:border-[#00448a] hover:shadow-xl hover:shadow-[#00448a]/20 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98]"
+              ? "text-slate-900"
+              : "text-slate-600 hover:text-slate-900"
           }`}
         >
-          {/* Button pressed effect for active state */}
-          {active && (
-            <div className="absolute inset-0 rounded-lg bg-black/10 pointer-events-none" />
+          <span className="flex items-center gap-3">
+            <Icon
+              className={`h-5 w-5 transition ${
+                active ? "text-slate-900" : "text-slate-400 group-hover:text-slate-600"
+              }`}
+            />
+            <span>{label}</span>
+          </span>
+          {active ? (
+            <svg className="h-5 w-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+            </svg>
+          ) : (
+            <svg className="h-5 w-5 text-slate-400 transition group-hover:translate-x-1 group-hover:text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           )}
-          
-          {/* Hover glow effect */}
-          <div
-            className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${
-              active ? "hidden" : "bg-gradient-to-r from-[#00448a]/10 via-[#26ebe5]/10 to-[#00448a]/10"
-            }`}
-          />
-          
-          {/* Content wrapper */}
-          <div className="relative z-10 flex items-center justify-between">
-            <span className="relative z-10">{label}</span>
-            
-            {/* Icon indicator */}
-            <div className="relative z-10 flex items-center">
-              {active ? (
-                <svg
-                  className="w-5 h-5 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-5 h-5 text-neutral-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              )}
-            </div>
-          </div>
-          
-          {/* Top highlight for 3D effect */}
-          <div
-            className={`absolute top-0 left-0 right-0 h-1/2 rounded-t-lg pointer-events-none ${
-              active
-                ? "bg-white/10"
-                : "bg-gradient-to-b from-white/50 to-transparent group-hover:from-white/20 group-hover:to-transparent"
-            }`}
-          />
         </button>
       </Link>
     );
@@ -130,128 +118,83 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50" style={{ fontFamily: 'Times New Roman, serif' }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mt-4 bg-white/50 border border-white/40 backdrop-blur-lg gradient-border rounded-2xl px-2 sm:px-6 py-2 sm:py-3 flex items-center">
-          {/* Left: Logo and Title side by side - Unique Geometric Design */}
-          <Link href="/" className="flex-1 min-w-0 flex items-center gap-2 sm:gap-4 group">
-            {/* Round Logo */}
-            <div className="relative flex-shrink-0">
-              <div className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center">
-                <img
-                  src="/img1.jpg"
-                  alt="VAWE logo"
-                  className="h-10 w-10 sm:h-14 sm:w-14 object-cover rounded-full border-2 border-[#00448a]"
-                />
-              </div>
-            </div>
-            
-            {/* Plain Text Title */}
-            <div className="relative block">
-              <h1
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-2"
-                style={{ fontFamily: 'Times New Roman, serif', color: '#00448a' }}
-              >
-                <span
-                  className="text-xl sm:text-3xl md:text-4xl font-bold tracking-wide sm:tracking-[0.10em] md:tracking-[0.05em] leading-tight"
-                  style={{ color: '#00448a', textShadow: '0 1px 1px rgba(255,255,255,0.6), 0 0 8px rgba(0,68,138,0.35)', filter: 'brightness(1.08)' }}
-                >
-                  VAWE
-                </span>
-                <span
-                  className="text-sm sm:text-xl md:text-2xl font-semibold leading-tight"
-                  style={{ color: '#00448a', textShadow: '0 1px 1px rgba(255,255,255,0.35), 0 0 4px rgba(0,68,138,0.2)' }}
-                >
-                  Global Tech
-                </span>
-              </h1>
-            </div>
-          </Link>
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-white/80 via-white/60 to-transparent backdrop-blur"
+      style={{ fontFamily: "Times New Roman, serif" }}
+    >
+      <div className="mx-auto flex w-full max-w-none items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white shadow">
+            <img src="/logo2.jfif" alt="VAWE logo" className="h-10 w-10 rounded-full object-cover" />
+          </div>
+          <div className="leading-tight text-slate-900">
+            <p className="text-lg font-bold tracking-wide">VAWE</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">Global Tech</p>
+          </div>
+        </Link>
 
-          {/* Right: Call + Hamburger */}
-          <div className="flex-1 min-w-0 flex justify-end items-center gap-1.5 sm:gap-2">
-            <a
-              href="tel:+918885103333"
-              aria-label="Call VAWE Global Tech"
-              className="p-1.5 sm:px-3 sm:py-2 rounded-lg text-white hover:brightness-110 transition"
-              style={{ backgroundColor: 'var(--vawe-green)', color: 'white', fontFamily: 'Times New Roman, serif' }}
-            >
-              <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
-            </a>
-            <button
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-              className="p-1.5 sm:px-3 sm:py-2 rounded-lg bg-white/50 border border-white/50 backdrop-blur-lg gradient-border flex items-center gap-1.5 sm:gap-2"
-            >
-              <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm hidden sm:inline">Menu</span>
-            </button>
+        <nav className="hidden items-center gap-4 px-3 py-2 md:flex">
+          {links.map(({ href, label, Icon }) => (
+            <NavLink key={href} href={href} label={label} Icon={Icon} />
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href="tel:+918885103333"
+            aria-label="Call VAWE Global Tech"
+            className="hidden items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:-translate-y-0.5 hover:shadow-xl md:flex"
+          >
+            <Phone className="h-4 w-4" />
+            <span>Call Us</span>
+          </a>
+          <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/70 px-3 py-2 text-sm font-semibold text-slate-700 shadow"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            <span className="hidden sm:inline">{open ? "Close" : "Menu"}</span>
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div className="fixed inset-0 z-40" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
+          <div className="absolute top-[80px] right-0 w-full max-w-md px-6" ref={menuRef}>
+            <div className="max-h-[calc(100vh-120px)] overflow-y-auto rounded-3xl border border-white/10 bg-white/95 p-6 shadow-2xl">
+              <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
+                <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white">
+                    <img src="/logo2.jfif" alt="VAWE logo" className="h-8 w-8 rounded-full object-cover" />
+                  </div>
+                  <div className="text-slate-900">
+                    <p className="text-base font-bold">VAWE</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+                      GlobalTech
+                    </p>
+                  </div>
+                </Link>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                  className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <nav className="flex flex-col gap-3">
+                {links.map(({ href, label, Icon }) => (
+                  <MenuButton key={href} href={href} label={label} Icon={Icon} />
+                ))}
+              </nav>
+            </div>
           </div>
         </div>
-
-        {/* Overlay Menu - Right Drawer */}
-        {open && (
-          <div className="fixed inset-0 z-40" role="dialog" aria-modal="true">
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-            <div className="absolute top-[84px] right-0 w-80 sm:w-[28rem] pr-4" ref={menuRef}>
-              <div className="max-h-[calc(100vh-120px)] h-auto bg-white/95 backdrop-blur-md gradient-border rounded-l-2xl px-4 py-3 flex flex-col overflow-auto">
-                {/* Drawer header with logo + title and close */}
-                <div className="flex items-center justify-between pb-2 border-b border-black/10">
-                  <Link href="/" className="flex items-center gap-2 sm:gap-3 group" onClick={() => setOpen(false)}>
-                    {/* Round Logo */}
-                    <div className="relative flex-shrink-0">
-                      <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center">
-                        <img
-                          src="/img1.jpg"
-                          alt="VAWE logo"
-                          className="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full border-2 border-[#00448a]"
-                        />
-                      </div>
-                    </div>
-                    
-                    {/* Plain Text Title */}
-                    <div className="relative block">
-                      <h1
-                        className="flex flex-col items-start gap-0"
-                        style={{ fontFamily: 'Times New Roman, serif', color: '#00448a' }}
-                      >
-                        <span
-                          className="text-xl sm:text-2xl font-bold tracking-wide leading-tight"
-                          style={{ color: '#00448a', textShadow: '0 1px 1px rgba(255,255,255,0.6), 0 0 8px rgba(0,68,138,0.35)', filter: 'brightness(1.08)' }}
-                        >
-                          VAWE
-                        </span>
-                        <span
-                          className="text-sm sm:text-base font-semibold leading-tight"
-                          style={{ color: '#00448a', textShadow: '0 1px 1px rgba(255,255,255,0.35), 0 0 4px rgba(0,68,138,0.2)' }}
-                        >
-                          Global Tech
-                        </span>
-                      </h1>
-                    </div>
-                  </Link>
-                  <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2 rounded-md hover:bg-black/5">
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-                <nav className="mt-2 flex-1">
-                  <ul className="flex flex-col gap-2.5 py-3">
-                    <li onClick={() => setOpen(false)}><MenuButton href="/" label="Home" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/about" label="About Us" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/services" label="Services" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/products" label="Products" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/packages" label="Packages" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/digital-marketing" label="Digital Marketing" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/institutes" label="VAWE Institutes" /></li>
-                    <li onClick={() => setOpen(false)}><MenuButton href="/contact" label="Contact" /></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </header>
   );
 }

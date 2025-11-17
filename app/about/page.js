@@ -1,7 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
-import { Target, Eye, BookOpen, Lightbulb, ShieldCheck } from "lucide-react";
+import {
+  Target,
+  Eye,
+  BookOpen,
+  Lightbulb,
+  ShieldCheck,
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  Medal,
+  Users,
+  Monitor,
+  Network,
+  Settings,
+  Server,
+  Mail,
+} from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -94,9 +110,9 @@ const ValueCard3D = ({ title, desc, icon: Icon, image }) => {
           }}
         />
         <div className="card-info">
-          <div className="flex items-center gap-3 mb-2">
-            {Icon && <Icon size={24} />}
-            <h3 className="text-2xl md:text-3xl font-bold">{title}</h3>
+          <div className="flex items-center gap-1.5 md:gap-3 mb-1 md:mb-2">
+            {Icon && <Icon className="w-3.5 h-3.5 md:w-6 md:h-6" />}
+            <h3 className="text-sm md:text-2xl lg:text-3xl font-bold">{title}</h3>
           </div>
           <p>{desc}</p>
         </div>
@@ -151,114 +167,195 @@ export default function About() {
         </motion.p>
       </section>
 
-      {/* Certifications and Clients */}
+      {/* Company Overview - Redesigned */}
       <section className="w-full px-6 mt-8 md:mt-12">
-        <div className="container mx-auto grid md:grid-cols-2 gap-4 md:gap-6">
-          <div className="relative overflow-hidden rounded-2xl border-2 p-6 shadow-lg backdrop-blur-sm" style={{ borderColor: 'var(--vawe-teal)', backgroundColor: 'var(--vawe-beige)/10' }}>
-            <h3 className="text-xl font-semibold" style={{ color: 'var(--vawe-navy)' }}>Certifications</h3>
-            <p className="mt-2 text-neutral-700">Certified by <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>ISO</span>, <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>MSME</span>, <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>APSCHE</span>, and <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>AICTE</span> as <span className="font-semibold" style={{ color: 'var(--vawe-coral)' }}>VAWE</span>.</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="px-3 py-1 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: 'var(--vawe-teal)' }}>ISO Certified</span>
-              <span className="px-3 py-1 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: 'var(--vawe-navy)' }}>MSME Registered</span>
-              <span className="px-3 py-1 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: 'var(--vawe-coral)' }}>APSCHE</span>
-              <span className="px-3 py-1 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: 'var(--vawe-beige)' }}>AICTE</span>
+        <div className="container mx-auto">
+          {/* Mobile: Heading and title first */}
+          <div className="lg:hidden space-y-4 mb-6">
+            <div>
+              <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] mb-3" style={{ color: "var(--vawe-coral)" }}>
+                Company Overview
+              </span>
+              <h2 className="text-2xl font-bold font-[var(--font-orbitron)] leading-tight mb-4" style={{ color: "var(--vawe-navy)" }}>
+                Reinventing business with excellence, people, and values
+              </h2>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-2xl border-2 p-6 shadow-lg backdrop-blur-sm" style={{ borderColor: 'var(--vawe-coral)', backgroundColor: 'var(--vawe-beige)/10' }}>
-            <h3 className="text-xl font-semibold" style={{ color: 'var(--vawe-navy)' }}>Clients</h3>
-            <ul className="mt-3 space-y-2 text-neutral-700">
-              <li className="flex items-center gap-2">
-                <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--vawe-teal)' }} />
-                <span>VAWE clients include <span className="font-semibold" style={{ color: 'var(--vawe-navy)' }}>Laila neuticals</span>.</span>
-              </li>
-            </ul>
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+            {/* Content Section - Redesigned */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex-1 space-y-5 order-2 lg:order-1"
+            >
+              {/* Desktop: Show all content normally */}
+              <div className="hidden lg:block space-y-4">
+                <div>
+                  <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] mb-3" style={{ color: "var(--vawe-coral)" }}>
+                    Company Overview
+                  </span>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-[var(--font-orbitron)] leading-tight mb-4" style={{ color: "var(--vawe-navy)" }}>
+                    Reinventing business with excellence, people, and values
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="relative">
+                    <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full" style={{ backgroundColor: 'var(--vawe-teal)' }} />
+                    <div className="pl-5">
+                      <p className="text-base md:text-lg leading-relaxed font-medium text-neutral-800">
+                        "VAWE Technologies is a global IT company driven by technology pioneers committed to business transformation through excellence, people, and values."
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm md:text-base leading-relaxed text-neutral-600 max-w-2xl">
+                    Our technology center, powered by My Tutorings, is a premium training hub that nurtures talent and fuels our innovation engine. We empower teams to ship platforms that adapt, scale, and deliver meaningful outcomes.
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile: Show content after image */}
+              <div className="space-y-4 lg:hidden">
+                <div className="relative">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full" style={{ backgroundColor: 'var(--vawe-teal)' }} />
+                  <div className="pl-5">
+                    <p className="text-sm leading-relaxed font-medium text-neutral-800">
+                      "VAWE Technologies is a global IT company driven by technology pioneers committed to business transformation through excellence, people, and values."
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-xs leading-relaxed text-neutral-600">
+                  Our technology center, powered by My Tutorings, is a premium training hub that nurtures talent and fuels our innovation engine. We empower teams to ship platforms that adapt, scale, and deliver meaningful outcomes.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-neutral-200">
+                <div className="flex flex-wrap gap-3">
+                  {["Excellence", "People", "Values", "Innovation"].map((t, i) => {
+                    const colors = ["var(--vawe-teal)", "var(--vawe-coral)", "var(--vawe-navy)", "var(--vawe-beige)"];
+                    return (
+                      <div
+                        key={t}
+                        className="group relative"
+                      >
+                        <div 
+                          className="px-4 py-1.5 rounded-full text-xs font-bold text-white transition-transform hover:scale-105 shadow-sm hover:shadow-md"
+                          style={{ backgroundColor: colors[i] }}
+                        >
+                          {t}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 mt-6 px-6 py-2.5 rounded-full bg-[var(--vawe-navy)] text-white font-semibold hover:bg-[var(--vawe-navy)]/90 transition-all hover:gap-3 shadow-md hover:shadow-lg text-sm"
+                >
+                  Discover More
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Circular Image Section - Mobile order: after heading */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative flex-shrink-0 order-1 lg:order-2 mx-auto lg:mx-0"
+            >
+              <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-80 lg:h-80 xl:w-96 xl:h-96">
+                {/* Outer ring decoration */}
+                <div className="absolute inset-0 rounded-full border-4" style={{ borderColor: 'var(--vawe-teal)', opacity: 0.2 }} />
+                
+                {/* Circular image with blended edges */}
+                <div 
+                  className="absolute inset-4 rounded-full overflow-hidden"
+                  style={{
+                    maskImage: 'radial-gradient(circle, black 60%, transparent 100%)',
+                    WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 100%)',
+                  }}
+                >
+                  <img
+                    src="/img1.jpg"
+                    alt="Company leadership"
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#fef5ec]/40" />
+                </div>
+                
+                {/* Decorative dots */}
+                <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[var(--vawe-coral)] shadow-lg" />
+                <div className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-[var(--vawe-teal)]/30 blur-md" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Mission / Vision / Story - redesigned */}
-      <section className="w-full px-6 mt-8 md:mt-12">
-        <div className="container mx-auto grid md:grid-cols-3 gap-6 md:gap-8">
-          {[
-          { title: "Our Mission", text: "Empower brands with beautiful, performance software and design.", icon: Target, ring: "from-[var(--vawe-coral)] to-[var(--vawe-beige)]" },
-          { title: "Our Vision", text: "A world where digital interactions feel fluid, elegant, and human.", icon: Eye, ring: "from-[var(--vawe-teal)] to-[var(--vawe-navy)]" },
-          { title: "Our Story", text: "Born in 2025, VAWE GlobalTech unites design excellence with engineering rigor.", icon: BookOpen, ring: "from-[var(--vawe-beige)] to-[var(--vawe-coral)]" },
-        ].map((card, i) => (
-          <motion.div
-            key={card.title}
+      <section className="w-full px-6 mt-8 md:mt-12 py-10 md:py-14" style={{ backgroundColor: "#fdf1e0" }}>
+        <div className="container mx-auto">
+          <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.6 }}
-            whileHover={{ y: -6, scale: 1.02 }}
-            className="relative rounded-3xl p-5 md:p-7 bg-white/80 border border-white/50 shadow-lg backdrop-blur-sm overflow-hidden"
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center font-[var(--font-orbitron)]"
+            style={{ color: "var(--vawe-navy)" }}
           >
-            <div className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${card.ring} blur-3xl opacity-40`} />
-            <div className="relative flex items-start gap-4">
-              <div className={`shrink-0 h-12 w-12 rounded-xl bg-gradient-to-br ${card.ring} p-[2px]`}> 
-                <div className="h-full w-full rounded-[10px] bg-white grid place-items-center">
-                  {card.icon && <card.icon size={22} className="text-neutral-900" />}
+            Our Fundamental Business
+          </motion.h2>
+          <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Our Mission",
+                text: "Empower brands with beautiful, high-performance software and design.",
+                icon: Target,
+                ring: "from-[var(--vawe-coral)] to-[var(--vawe-beige)]",
+              },
+              {
+                title: "Our Vision",
+                text: "A world where digital interactions feel fluid, elegant, and unmistakably human.",
+                icon: Eye,
+                ring: "from-[var(--vawe-teal)] to-[var(--vawe-navy)]",
+              },
+              {
+                title: "Our Story",
+                text: "Born in 2025, VAWE GlobalTech unites design excellence with engineering rigor.",
+                icon: BookOpen,
+                ring: "from-[var(--vawe-beige)] to-[var(--vawe-coral)]",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.6 }}
+                whileHover={{ y: -8, scale: 1.03 }}
+                className="relative rounded-2xl md:rounded-3xl bg-white shadow-[0_18px_45px_rgba(7,23,56,0.12)] border border-white/70 text-center px-4 py-6 md:px-6 md:py-10 overflow-hidden"
+              >
+                <div className={`absolute -top-20 left-1/2 h-44 w-44 -translate-x-1/2 rounded-full bg-gradient-to-br ${card.ring} blur-3xl opacity-40`} />
+                <div className="relative mx-auto flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-white shadow-[0_12px_30px_rgba(7,23,56,0.14)]">
+                  {card.icon && <card.icon size={24} className="md:w-[30px] md:h-[30px] text-[var(--vawe-navy)]" />}
                 </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-neutral-900">{card.title}</h3>
-                <p className="mt-2 text-neutral-700 leading-relaxed">{card.text}</p>
-              </div>
-            </div>
-        </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Overview */}
-      {/* Company Overview - split card */}
-      <section className="w-full px-6 mt-8 md:mt-12">
-        <div className="container mx-auto">
-          <div className="relative rounded-3xl overflow-hidden border-2 shadow-xl backdrop-blur-sm grid md:grid-cols-2" style={{ borderColor: 'var(--vawe-teal)', backgroundColor: 'rgba(254,203,157,0.15)' }}>
-          <div className="p-6 md:p-8">
-            <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-3xl font-bold font-[var(--font-orbitron)]"
-              style={{ color: 'var(--vawe-navy)' }}
-            >
-              Company Overview
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              custom={0.2}
-              className="mt-4 leading-relaxed"
-              style={{ color: 'var(--vawe-navy)' }}
-            >
-              VAWE Technologies is a global IT company driven by technology pioneers committed to business transformation through excellence, people, and values.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              custom={0.35}
-              className="mt-4 leading-relaxed"
-              style={{ color: 'var(--vawe-navy)' }}
-            >
-              Our technology center, powered by My Tutorings, is a premium training hub that nurtures talent and fuels our innovation engine.
-            </motion.p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Excellence", "People", "Values", "Innovation"].map((t, i) => {
-                const colors = ['var(--vawe-teal)', 'var(--vawe-coral)', 'var(--vawe-navy)', 'var(--vawe-beige)'];
-                return (
-                  <span key={t} className="px-3 py-1 rounded-full text-sm font-semibold text-white" style={{ backgroundColor: colors[i] }}>{t}</span>
-                );
-              })}
-            </div>
+                <h3 className="relative mt-4 md:mt-6 text-base md:text-xl font-semibold" style={{ color: "var(--vawe-navy)" }}>
+                  {card.title}
+                </h3>
+                <p className="relative mt-2 md:mt-3 text-xs md:text-base leading-relaxed text-neutral-700">{card.text}</p>
+              </motion.div>
+            ))}
           </div>
-          <div className="relative min-h-[260px] md:min-h-full overflow-hidden">
-            <img src="/img1.jpg" alt="Company" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-          </div>
-        </div>
         </div>
       </section>
 
@@ -266,7 +363,7 @@ export default function About() {
       <section className="w-full px-6 mt-8 md:mt-12">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-3 md:mb-4" style={{ color: '#00448a' }}>Core Values</h2>
-          <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-6 px-4">
+          <div className="mt-6 md:mt-8 grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 px-4">
           {[
             { title: "Innovation", desc: "Our innovations aim to create transformations that give businesses a competitive edge.", icon: Lightbulb, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=600&fit=crop" },
             { title: "Insight", desc: "We foresee trends and meet needs through vision, skill, and collective intelligence.", icon: Eye, image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=600&fit=crop" },
@@ -306,9 +403,9 @@ export default function About() {
           }
           .card {
             position: relative;
-            flex: 0 0 240px;
-            width: 240px;
-            height: 320px;
+            flex: 0 0 140px;
+            width: 140px;
+            height: 190px;
             background-color: #333;
             overflow: hidden;
             border-radius: 10px;
@@ -317,6 +414,13 @@ export default function About() {
               inset #333 0 0 0 5px,
               inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
             transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          }
+          @media (min-width: 768px) {
+            .card {
+              flex: 0 0 240px;
+              width: 240px;
+              height: 320px;
+            }
           }
           .card-bg {
             opacity: 0.5;
@@ -333,17 +437,29 @@ export default function About() {
             pointer-events: none;
           }
           .card-info {
-            padding: 20px;
+            padding: 10px;
             position: absolute;
             bottom: 0;
             color: #fff;
             transform: translateY(40%);
             transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
           }
+          @media (min-width: 768px) {
+            .card-info {
+              padding: 20px;
+            }
+          }
           .card-info p {
             opacity: 0;
             text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
             transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+            font-size: 10px;
+            line-height: 1.3;
+          }
+          @media (min-width: 768px) {
+            .card-info p {
+              font-size: 14px;
+            }
           }
           .card-info * {
             position: relative;
@@ -365,131 +481,324 @@ export default function About() {
           }
           .card-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 14px;
             font-weight: 700;
             text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
             color: white;
           }
+          @media (min-width: 768px) {
+            .card-info h3 {
+              font-size: 24px;
+            }
+          }
+          .card-info svg {
+            width: 14px;
+            height: 14px;
+          }
+          @media (min-width: 768px) {
+            .card-info svg {
+              width: 24px;
+              height: 24px;
+            }
+          }
         `}</style>
       </section>
 
-      {/* Milestones - Timeline Design */}
-      <section className="w-full px-6 mt-8 md:mt-12" style={{ backgroundColor: 'rgba(254,203,157,0.1)' }}>
-        <div className="container mx-auto py-8 md:py-12">
-          <h2 className="text-3xl font-bold font-[var(--font-orbitron)] text-center mb-8 md:mb-12" style={{ color: '#00448a' }}>Milestones</h2>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full hidden md:block" style={{ background: 'linear-gradient(to bottom, var(--vawe-teal), var(--vawe-coral), var(--vawe-navy), var(--vawe-beige), var(--vawe-teal))', height: '100%' }}></div>
-            
-            <div className="space-y-8 md:space-y-10">
-              {[
-                { year: "2016", title: "Founded", desc: "VAWE starts with a mission to unite design and engineering.", color: 'var(--vawe-coral)' },
-                { year: "2018", title: "50+ Projects", desc: "First wave of production apps across multiple industries.", color: 'var(--vawe-teal)' },
-                { year: "2021", title: "Cloud‑Native", desc: "Platform blueprint for secure, scalable deployments.", color: 'var(--vawe-navy)' },
-                { year: "2023", title: "AI Practice", desc: "Expanded into ML solutions and intelligent automation.", color: 'var(--vawe-beige)' },
-                { year: "2025", title: "Global Delivery", desc: "Serving clients across regions with a partner ecosystem.", color: 'var(--vawe-coral)' },
-              ].map((m, i) => (
+      {/* Certifications and Clients */}
+      <section className="w-full px-6 mt-8 md:mt-12 py-12 md:py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#fff4e8] via-white to-[#fef5ec]" />
+        <div className="container mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-orbitron)] mb-4" style={{ color: "var(--vawe-navy)" }}>
+              Our Prestigious Awards &amp; Certifications
+            </h2>
+            <p className="max-w-3xl mx-auto text-base md:text-lg text-neutral-600 leading-relaxed">
+              Certified by <span className="font-semibold text-[var(--vawe-coral)]">ISO</span>, <span className="font-semibold text-[var(--vawe-coral)]">MSME</span>, <span className="font-semibold text-[var(--vawe-coral)]">APSCHE</span>, and <span className="font-semibold text-[var(--vawe-coral)]">AICTE</span> as <span className="font-semibold text-[var(--vawe-coral)]">VAWE</span>
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3 md:gap-4 lg:gap-6 mb-12">
+            {[
+              { icon: Award, label: "ISO Certified", accent: "var(--vawe-teal)", desc: "Quality Management" },
+              { icon: BadgeCheck, label: "MSME Registered", accent: "var(--vawe-navy)", desc: "Small Business" },
+              { icon: ShieldCheck, label: "APSCHE", accent: "var(--vawe-coral)", desc: "Education Approved" },
+              { icon: Medal, label: "AICTE", accent: "var(--vawe-beige)", desc: "Technical Excellence" },
+              { icon: Monitor, label: "Microsoft", accent: "var(--vawe-teal)", desc: "Technology Partner" },
+              { icon: Network, label: "Cisco", accent: "var(--vawe-navy)", desc: "Network Solutions" },
+              { icon: Settings, label: "Bosch", accent: "var(--vawe-coral)", desc: "Innovation Partner" },
+              { icon: Server, label: "IBM", accent: "var(--vawe-beige)", desc: "Enterprise Solutions" },
+              { icon: Mail, label: "Postal Department", accent: "var(--vawe-teal)", desc: "Government Partner" },
+            ].map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="flex flex-col items-center text-center"
+              >
+                <div
+                  className="grid h-8 w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 place-items-center rounded-lg md:rounded-xl lg:rounded-2xl text-white mb-2 md:mb-3 lg:mb-4"
+                  style={{ backgroundColor: item.accent }}
+                >
+                  <item.icon size={16} className="md:w-5 md:h-5 lg:w-8 lg:h-8" />
+                </div>
+                <h3 className="text-[10px] md:text-xs lg:text-sm font-bold mb-0.5 md:mb-1" style={{ color: "var(--vawe-navy)" }}>
+                  {item.label}
+                </h3>
+                <p className="text-[8px] md:text-[9px] lg:text-[10px] text-neutral-600 leading-tight">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="relative rounded-2xl bg-gradient-to-r from-[var(--vawe-navy)]/5 to-[var(--vawe-coral)]/5 border border-[var(--vawe-navy)]/10 p-6 md:p-8"
+          >
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 mt-1">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-[var(--vawe-teal)]/20">
+                  <Users size={24} className="text-[var(--vawe-teal)]" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold mb-3 font-[var(--font-orbitron)]" style={{ color: "var(--vawe-navy)" }}>
+                  Trusted Partners
+                </h3>
+                <p className="text-neutral-700 leading-relaxed">
+                  VAWE clients include <span className="font-semibold text-[var(--vawe-navy)]">Laila neuticals</span> and other leading organizations who trust us to deliver exceptional digital solutions.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Milestones - Clean Simple Design */}
+      <section className="relative w-full px-6 mt-6 md:mt-8 py-8 md:py-12 overflow-hidden">
+        {/* Background Design Elements */}
+        <div className="pointer-events-none absolute inset-0">
+          {/* Gradient Orbs */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-[var(--vawe-navy)]/5 blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-[var(--vawe-beige)]/5 blur-3xl" />
+          
+          {/* Grid Pattern */}
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(var(--vawe-navy) 1px, transparent 1px), linear-gradient(90deg, var(--vawe-navy) 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
+            }}
+          />
+          
+          {/* Decorative Lines */}
+          <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--vawe-navy)]/10 to-transparent" />
+          <div className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--vawe-beige)]/10 to-transparent" />
+        </div>
+        
+        <div className="relative container mx-auto max-w-4xl">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold font-[var(--font-orbitron)] text-center mb-8 md:mb-12" 
+            style={{ color: 'var(--vawe-navy)' }}
+          >
+            Milestones
+          </motion.h2>
+          
+          <div className="space-y-6 md:space-y-8">
+            {[
+              { year: "2016", title: "Founded", desc: "VAWE starts with a mission to unite design and engineering." },
+              { year: "2018", title: "50+ Projects", desc: "First wave of production apps across multiple industries." },
+              { year: "2021", title: "Cloud‑Native", desc: "Platform blueprint for secure, scalable deployments." },
+              { year: "2023", title: "AI Practice", desc: "Expanded into ML solutions and intelligent automation." },
+              { year: "2025", title: "Global Delivery", desc: "Serving clients across regions with a partner ecosystem." },
+            ].map((m, i) => {
+              // Use only two colors: navy blue and beige/biscuit, alternating
+              const color = i % 2 === 0 ? 'var(--vawe-navy)' : 'var(--vawe-beige)';
+              
+              return (
                 <motion.div
                   key={m.year}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6 }}
-                  className={`relative flex flex-col md:flex-row items-center gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="relative flex justify-center"
                 >
-                  {/* Content Card */}
-                  <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="relative rounded-2xl p-5 md:p-6 shadow-xl backdrop-blur-sm border-2" 
-                      style={{ 
-                        borderColor: m.color,
-                        backgroundColor: 'rgba(255,255,255,0.9)'
-                      }}
-                    >
-                      <div className={`absolute -top-3 ${i % 2 === 0 ? 'right-6' : 'left-6'} px-4 py-1 rounded-full text-white font-bold text-sm`} style={{ backgroundColor: m.color }}>
+                  <div className="flex items-start gap-4 md:gap-6 w-full max-w-2xl">
+                    {/* Year Badge */}
+                    <div className="flex-shrink-0">
+                      <div 
+                        className="w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center font-bold text-white text-lg md:text-xl shadow-md"
+                        style={{ backgroundColor: color }}
+                      >
                         {m.year}
                       </div>
-                      <h3 className="text-2xl font-bold mt-2" style={{ color: 'var(--vawe-navy)' }}>{m.title}</h3>
-                      <p className="mt-3 text-neutral-700 leading-relaxed">{m.desc}</p>
-                    </motion.div>
-                  </div>
-                  
-                  {/* Timeline Dot */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div 
-                      className="w-16 h-16 rounded-full border-4 border-white shadow-lg flex items-center justify-center font-bold text-white"
-                      style={{ backgroundColor: m.color }}
-                    >
-                      {m.year.slice(-2)}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 pt-1">
+                      <h3 className="text-xl md:text-2xl font-bold font-[var(--font-orbitron)] mb-2" style={{ color: 'var(--vawe-navy)' }}>
+                        {m.title}
+                      </h3>
+                      <p className="text-neutral-600 text-sm md:text-base leading-relaxed">
+                        {m.desc}
+                      </p>
                     </div>
                   </div>
                   
-                  {/* Empty space for alternating layout */}
-                  <div className="flex-1 hidden md:block"></div>
+                  {/* Connecting Line (except last item) */}
+                  {i < 4 && (
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-16 md:top-20 w-0.5 h-6 md:h-8 opacity-20" style={{ backgroundColor: color }} />
+                  )}
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Team */}
       <section className="w-full px-6 mt-8 md:mt-12 pb-8 md:pb-12">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-6 md:mb-8 font-[var(--font-orbitron)]" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
-            Meet the Team
-          </h2>
+        <div className="container mx-auto max-w-7xl">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[var(--font-orbitron)]" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+              Meet the Team
+            </h2>
+            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
+              The talented individuals driving innovation and excellence
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {team.map((m, i) => (
-            <motion.div
-              key={m.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -6, rotate: 0.5, scale: 1.02 }}
-              className="group relative rounded-3xl bg-white/70 p-6 text-center shadow-lg backdrop-blur-xl ring-1 ring-white/50 hover:shadow-2xl transition will-change-transform"
-            >
-              <div className="relative mx-auto h-24 w-24">
-                <div className="absolute inset-0 rounded-full blur-md opacity-50 group-hover:opacity-70 transition" style={{ background: 'linear-gradient(to top right, var(--vawe-coral), var(--vawe-teal), var(--vawe-navy))' }} />
-                <img
-                  src={m.photo}
-                  alt={`${m.name} photo`}
-                  className="relative h-24 w-24 rounded-full object-cover bg-white"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.style.display = "none";
-                    const fallback = e.currentTarget.parentElement?.querySelector(
-                      "[data-fallback]"
-                    );
-                    if (fallback) fallback.removeAttribute("hidden");
-                  }}
-                />
-                <div
-                  data-fallback
-                  hidden
-                  className="relative grid place-items-center h-24 w-24 rounded-full bg-white text-neutral-900 font-semibold text-3xl"
+          {/* Team Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
+            {team.map((m, i) => {
+              const colors = ['var(--vawe-coral)', 'var(--vawe-teal)', 'var(--vawe-navy)', 'var(--vawe-beige)'];
+              const color = colors[i % colors.length];
+              
+              return (
+                <motion.div
+                  key={m.name}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="group relative"
                 >
-                  {m.name.split(" ").map((n) => n[0]).join("")}
-                </div>
-                <div className="pointer-events-none absolute -inset-1 rounded-full border-2 border-white/60" />
-              </div>
-                <h4 className="mt-4 font-semibold text-neutral-900">{m.name}</h4>
-                <p className="text-neutral-700 text-sm">{m.role}</p>
-              <div className="mt-4 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition">
-                <a href="#" aria-label="LinkedIn" className="h-8 w-8 grid place-items-center rounded-full bg-neutral-900/5 hover:bg-neutral-900/10">
-                  <span className="text-xs">in</span>
-                </a>
-                <a href="#" aria-label="Mail" className="h-8 w-8 grid place-items-center rounded-full bg-neutral-900/5 hover:bg-neutral-900/10">
-                  <span className="text-xs">@</span>
-                </a>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Card Container */}
+                  <div 
+                    className="relative h-full overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border-2"
+                    style={{ 
+                      clipPath: 'polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0% 15%)',
+                      borderColor: `${color}30`
+                    }}
+                  >
+                    {/* Gradient Accent Bar - Top */}
+                    <div 
+                      className="absolute top-0 left-0 right-0 h-2 md:h-3"
+                      style={{ 
+                        background: `linear-gradient(90deg, ${color}, ${colors[(i + 1) % colors.length]})`,
+                        clipPath: 'polygon(50% 0%, 100% 15%, 0% 15%)'
+                      }}
+                    />
+                    {/* Gradient Accent Bar - Bottom */}
+                    <div 
+                      className="absolute bottom-0 left-0 right-0 h-2 md:h-3"
+                      style={{ 
+                        background: `linear-gradient(90deg, ${colors[(i + 1) % colors.length]}, ${color})`,
+                        clipPath: 'polygon(0% 85%, 100% 85%, 50% 100%)'
+                      }}
+                    />
+                    
+                    {/* Content */}
+                    <div className="p-2.5 md:p-4 lg:p-5">
+                      {/* Image Container - Full Section */}
+                      <div className="relative mb-2 md:mb-4">
+                        <div className="relative mx-auto w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28">
+                          {/* Outer Glow */}
+                          <div 
+                            className="absolute -inset-1 md:-inset-1.5 rounded-full opacity-20 group-hover:opacity-40 blur-xl transition-opacity duration-300"
+                            style={{ backgroundColor: color }}
+                          />
+                          
+                          {/* Image Wrapper */}
+                          <div className="relative w-full h-full rounded-full overflow-hidden ring-2 md:ring-3 ring-white shadow-xl">
+                            <img
+                              src={m.photo}
+                              alt={`${m.name} photo`}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              loading="lazy"
+                              referrerPolicy="no-referrer"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.style.display = "none";
+                                const fallback = e.currentTarget.parentElement?.querySelector(
+                                  "[data-fallback]"
+                                );
+                                if (fallback) fallback.removeAttribute("hidden");
+                              }}
+                            />
+                            <div
+                              data-fallback
+                              hidden
+                              className="absolute inset-0 grid place-items-center bg-gradient-to-br from-neutral-100 to-neutral-200 text-neutral-700 font-bold text-sm md:text-xl"
+                            >
+                              {m.name.split(" ").map((n) => n[0]).join("")}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Name & Role */}
+                      <div className="text-center">
+                        <h4 className="text-sm md:text-base lg:text-xl font-bold font-[var(--font-orbitron)] mb-1 md:mb-2" style={{ color: 'var(--vawe-navy)' }}>
+                          {m.name}
+                        </h4>
+                        <div className="inline-flex items-center gap-1 md:gap-2 px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-medium"
+                          style={{ 
+                            backgroundColor: `${color}15`,
+                            color: color
+                          }}
+                        >
+                          <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full" style={{ backgroundColor: color }} />
+                          {m.role}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hover Overlay Effect */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none"
+                      style={{ 
+                        backgroundColor: color,
+                        clipPath: 'polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0% 15%)'
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

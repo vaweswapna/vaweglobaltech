@@ -17,8 +17,9 @@ export default function DigitalMarketing() {
         {
           title: "Search Engine Optimization (SEO)",
           copy: "Boost your online visibility and attract high-intent traffic.",
-          bullets: ["Keyword research", "On-page SEO", "Technical SEO", "Local SEO", "Backlink strategy"],
+          bullets: ["On Page SEO", "Off Page SEO", "Technical SEO", "SEO Audit", "Full Service SEO", "Website SEO", "Youtube SEO", "Keyword Research"],
           img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop",
+          headingImg: "/seo-heading.jpg", // Reference to SEO heading image
           color: "#f56c53",
           reverse: true,
         },
@@ -32,8 +33,9 @@ export default function DigitalMarketing() {
         {
           title: "Social Media Marketing",
           copy: "Build brand awareness and community engagement across all major platforms.",
-          bullets: ["Facebook & Instagram", "LinkedIn & Twitter (X)", "YouTube", "Content strategies"],
+          bullets: ["Business Page Creation", "Page setup & Optimization", "Accounts Management", "Creative Poster Designs", "Reels Designing", "Organic & Paid Advertising", "Integrated Social Campaigns", "Lead Generations", "Influencer Marketing", "Hashtag Generator", "Google Ads Run", "Youtube Video Making", "Youtube Page Services"],
           img: "/dsocialmarketing.jpg",
+          headingImg: "/social-media-heading.jpg", // Reference to Social Media Marketing heading image
           color: "#f56c53",
           reverse: true,
         },
@@ -62,10 +64,19 @@ export default function DigitalMarketing() {
         {
           title: "Brand Strategy & Design",
           copy: "Create a memorable and consistent digital presence.",
-          bullets: ["Logo making", "Brand identity", "Visual design", "Tone of voice", "Marketing collateral"],
+          bullets: ["Logo Design", "Boucher Design", "Product Design", "Banner Design", "Poster Design", "Business Cards", "Menu Cards", "Certificates Design", "Invitations E - Cards", "Video Invitations", "Video Editing", "PPT Presentations"],
           img: "/dbrand.jfif",
+          headingImg: "/graphic-design-heading.jpg", // Reference to Graphic Designing heading image
           color: "#f56c53",
           reverse: true,
+        },
+        {
+          title: "Web Design & Development",
+          copy: "Build stunning, functional websites that drive results and engage your audience.",
+          bullets: ["Wordpress & PHP Development", "Mobile Friendly Theme Design", "Website Redesign", "Website Maintenance", "Mobile App Maintenance", "1 year Domain /Hosting", "SEO Friendly", "E-Commerce Websites", "Dynamic / Static Web Designing"],
+          img: "/websiteimg.png",
+          headingImg: "/web-design-heading.jpg", // Reference to Web Design & Development heading image
+          color: "#00448a",
         },
       ].map((s, i) => {
         // All headings are black, regardless of card color
@@ -119,14 +130,25 @@ export default function DigitalMarketing() {
                       <div className="absolute -inset-3 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" style={{ background: `linear-gradient(135deg, ${s.color}, transparent)` }}></div>
                       <div className="relative rounded-xl overflow-hidden shadow-lg border bg-white/50 backdrop-blur-sm" style={{ borderColor: `${s.color}40` }}>
                         <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-white p-6">
-                          <img 
-                            src={s.img} 
-                            alt={s.title} 
-                            className="w-full h-full object-contain max-h-64" 
-                            loading="lazy" 
-                            referrerPolicy="no-referrer" 
-                            onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src='https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop'; }} 
-                          />
+                          {s.headingImg ? (
+                            <img 
+                              src={s.headingImg} 
+                              alt={s.title} 
+                              className="w-full h-full object-cover max-h-64 rounded-lg" 
+                              loading="lazy" 
+                              referrerPolicy="no-referrer" 
+                              onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src=s.img; }} 
+                            />
+                          ) : (
+                            <img 
+                              src={s.img} 
+                              alt={s.title} 
+                              className="w-full h-full object-contain max-h-64" 
+                              loading="lazy" 
+                              referrerPolicy="no-referrer" 
+                              onError={(e)=>{ e.currentTarget.onerror=null; e.currentTarget.src='https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop'; }} 
+                            />
+                          )}
                         </div>
                       </div>
                     </div>

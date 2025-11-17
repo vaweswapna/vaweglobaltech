@@ -3,14 +3,39 @@
 
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import ServiceCard from "./components/ServiceCard";
 import ScratchDeck from "./components/ScratchDeck";
-import { Rocket, Sparkles, Shield, Code2, Megaphone } from "lucide-react";
+import {
+  ArrowRight,
+  Rocket,
+  Sparkles,
+  Shield,
+  Code2,
+  Megaphone,
+} from "lucide-react";
 import Showcase from "./components/Showcase";
 
+const HERO_IMAGES = [
+  {
+    src: "/heroimg1.jpg",
+    title: "Successful Launch",
+    meta: "March 20, 2024",
+  },
+  {
+    src: "/heroimg2.jpg",
+    title: "Omnichannel Experience",
+    meta: "Deployed in 6 weeks",
+  },
+  {
+    src: "/codingimg.jpeg",
+    title: "AI-Assisted Delivery",
+    meta: "Automation first",
+  },
+];
+
 export default function Home() {
-  const heroRef = useRef(null);
   const words = [
     "Web Apps ",
     "Mobile Apps ",
@@ -22,6 +47,13 @@ export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [heroIdx, setHeroIdx] = useState(0);
+  const currentHero = HERO_IMAGES[heroIdx];
+  const heroStats = [
+    { value: "120+", label: "Launches shipped" },
+    { value: "35%", label: "Ops cost saved" },
+    { value: "99.99%", label: "SLO uptime" },
+  ];
 
   const provides = [
     {
@@ -80,7 +112,7 @@ export default function Home() {
     // Small delay to ensure transforms are applied correctly
     const timer = setTimeout(() => {
       setIsTransitioning(true);
-    }, 100);
+    }, 50);
     return () => clearTimeout(timer);
   }, []);
 
@@ -139,34 +171,13 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [isMounted]);
 
-  // Mouse hero effect
   useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-
-    const onMove = (e) => {
-      const r = el.getBoundingClientRect();
-      const x =
-        (e.clientX || (e.touches && e.touches[0]?.clientX) || 0) - r.left;
-      const y =
-        (e.clientY || (e.touches && e.touches[0]?.clientY) || 0) - r.top;
-      el.style.setProperty("--hx", `${x}px`);
-      el.style.setProperty("--hy", `${y}px`);
-    };
-
-    const onLeave = () => {
-      el.style.setProperty("--hx", `-1000px`);
-      el.style.setProperty("--hy", `-1000px`);
-    };
-
-    el.addEventListener("pointermove", onMove);
-    el.addEventListener("touchmove", onMove, { passive: true });
-    el.addEventListener("pointerleave", onLeave);
-    return () => {
-      el.removeEventListener("pointermove", onMove);
-      el.removeEventListener("touchmove", onMove);
-      el.removeEventListener("pointerleave", onLeave);
-    };
+    if (HERO_IMAGES.length <= 1) return undefined;
+    const interval = setInterval(
+      () => setHeroIdx((prev) => (prev + 1) % HERO_IMAGES.length),
+      6000
+    );
+    return () => clearInterval(interval);
   }, []);
 
   // Typing animation
@@ -200,74 +211,208 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[80vh] sm:min-h-[92vh] flex items-center justify-center overflow-hidden"
-      >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12] sm:scale-100"
-        >
-          <source src="/video.mp4" type="video/mp4" />
-        </video>
+      <section className="relative overflow-hidden bg-[#000b1d] text-white">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(101,239,242,0.16),transparent_58%)]" />
+          <div
+            className="absolute inset-0 opacity-45"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 120px)",
+            }}
+          />
+          <div className="absolute -top-36 -left-24 h-[360px] w-[360px] rounded-full bg-[var(--vawe-coral)]/18 blur-3xl" />
+          <div className="absolute bottom-[-220px] right-[-130px] h-[420px] w-[420px] rounded-full bg-[var(--vawe-teal)]/18 blur-[120px]" />
+        </div>
 
-        <div className="container mx-auto px-6 py-12 sm:py-16 relative z-10">
-          <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="font-(--font-orbitron) text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold"
-              style={{
-                color: "#ffffff",
-                textShadow:
-                  "0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3)",
-              }}
-            >
-              Building Digital Brilliance
-            </motion.h1>
-
-            <div className="mt-4 text-xl sm:text-2xl md:text-3xl font-(--font-raleway) px-4 py-2 rounded-lg bg-black/8 backdrop-blur-lg border border-white/20 inline-block">
-              <span className="font-bold text-white">We Build </span>
-              <span
-                className="font-bold"
-                style={{
-                  color: "var(--vawe-coral)",
-                  textShadow:
-                    "0 0 10px rgba(255,107,107,0.5), 2px 2px 8px rgba(0,0,0,0.5)",
-                }}
+        <div className="relative container mx-auto px-4 sm:px-6 pt-16 pb-10 md:py-28">
+          <div className="grid items-center gap-10 lg:gap-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <div className="space-y-6 sm:space-y-8">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-[12px] uppercase tracking-[0.32em] text-white/70 mt-3"
               >
-                {typed}
-              </span>
-              <span className="ml-1 inline-block w-[8px] sm:w-[10px] h-[1.2em] align-middle bg-white animate-pulse" />
+                <span className="inline-block h-2 w-2 rounded-full bg-[var(--vawe-teal)] animate-ping" />
+                Vawe Global Tech
+              </motion.span>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.02, duration: 0.5 }}
+                className="font-(--font-orbitron) text-[clamp(32px,6vw,48px)] md:text-[clamp(32px,4.5vw,48px)] lg:text-[clamp(36px,4vw,50px)] leading-[1.08] font-extrabold"
+              >
+                Building with digital Brilliance{" "}
+                <span className="text-[var(--vawe-teal)]">AI velocity</span>{" "}
+                for{" "}<br />
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-[var(--vawe-coral)]">
+                  {typed}
+                  <span className="inline-block h-[1.15em] w-[8px] translate-y-[4px] bg-white/80 align-middle animate-pulse" />
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.05, duration: 0.5 }}
+                className="max-w-xl text-sm sm:text-lg text-white/75 leading-relaxed"
+              >
+                We combine design systems, autonomous infrastructure, and product
+                telemetry to create experiences that learn and adapt. Launch faster,
+                stay secure, and keep customers coming back.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.08, duration: 0.5 }}
+                className="hidden md:flex flex-wrap items-center gap-3 sm:gap-4"
+              >
+                <a
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 rounded-full bg-[var(--vawe-teal)] px-6 py-3 text-sm sm:text-base font-semibold text-black shadow-[0_18px_48px_rgba(101,239,242,0.32)] transition duration-300 hover:shadow-[0_20px_56px_rgba(101,239,242,0.4)]"
+                >
+                  Launch a discovery sprint
+                  <ArrowRight
+                    size={20}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </a>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/25 px-6 py-3 text-sm sm:text-base font-semibold text-white/80 transition duration-300 hover:bg-white/10 hover:text-white"
+                >
+                  Explore services
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="hidden w-full grid-cols-3 gap-6 pt-4 sm:pt-6 md:grid"
+              >
+                {heroStats.map(({ value, label }) => (
+                  <div key={label}>
+                    <div className="text-3xl font-bold text-white sm:text-[36px]">
+                      {value}
+                    </div>
+                    <div className="mt-1 text-[11px] uppercase tracking-[0.32em] text-white/55">
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            <div className="relative mt-3 sm:mt-4 flex justify-center md:mt-0">
+              <div className="absolute -inset-6 hidden rounded-[48px] bg-white/5 blur-3xl md:block" />
+
+              <div className="relative w-full max-w-lg sm:max-w-xl">
+                <div className="pointer-events-none absolute inset-0 rounded-[44px] border border-white/10 bg-white/5 backdrop-blur"></div>
+                <div className="relative h-[320px] sm:h-[380px] md:h-[460px] overflow-hidden rounded-[44px]">
+                  <div className="absolute inset-x-6 top-6 h-[180px] rounded-[32px] border border-white/10 bg-white/10 opacity-35 blur-xl"></div>
+                  <div className="absolute inset-x-10 bottom-6 h-[180px] rounded-[32px] border border-white/10 bg-white/10 opacity-25 blur-xl"></div>
+
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentHero.src}
+                      initial={{ y: 80, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -80, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="relative h-full overflow-hidden rounded-[44px] border border-white/10 bg-black/40 shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
+                    >
+                      <Image
+                        src={currentHero.src}
+                        alt={currentHero.title}
+                        fill
+                        className="object-cover"
+                        priority
+                        loading="eager"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                      <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-4 rounded-3xl border border-white/15 bg-white/12 px-6 py-4 backdrop-blur">
+                        <div>
+                          <div className="text-[11px] uppercase tracking-[0.28em] text-white/60">
+                            Case study
+                          </div>
+                          <div className="mt-1 text-lg font-semibold text-white">
+                            {currentHero.title}
+                          </div>
+                          <div className="text-xs text-white/60">
+                            {currentHero.meta}
+                          </div>
+                        </div>
+                        <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-[var(--vawe-teal)]">
+                          <Sparkles size={20} />
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 flex -translate-x-1/2 gap-2">
+                  {HERO_IMAGES.map((item, idx) => (
+                    <button
+                      key={item.src}
+                      onClick={() => setHeroIdx(idx)}
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
+                        heroIdx === idx
+                          ? "w-8 bg-[var(--vawe-teal)]"
+                          : "w-4 bg-white/25 hover:bg-white/45"
+                      }`}
+                      aria-label={`Show hero showcase ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="mt-5 flex items-center justify-center gap-3 sm:gap-4"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+              className="mt-6 space-y-4 md:hidden"
             >
-              <a
-                href="#services"
-                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-sm sm:text-base bg-white text-black hover:bg-transparent hover:text-white border-2 border-transparent hover:border-white transition"
-              >
-                Get Started
-              </a>
-              <a
-                href="/contact"
-                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-sm sm:text-base"
-                style={{ backgroundColor: "var(--vawe-coral)", color: "#000" }}
-              >
-                Let's Talk
-              </a>
+              <div className="flex items-center justify-center gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-[var(--vawe-teal)] px-4 py-2 text-xs font-semibold text-black shadow-[0_12px_30px_rgba(101,239,242,0.28)] transition duration-300 hover:shadow-[0_16px_36px_rgba(101,239,242,0.34)]"
+                >
+                  Launch a sprint
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold text-white/80 transition duration-300 hover:bg-white/10 hover:text-white"
+                >
+                  Explore services
+                </a>
+              </div>
+
+              <div className="grid grid-cols-3 items-start gap-3 text-center">
+                {heroStats.map(({ value, label }) => (
+                  <div key={label}>
+                    <div className="text-lg font-bold text-white">{value}</div>
+                    <div className="mt-1 text-[9px] uppercase tracking-[0.26em] text-white/60">
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-black/10 to-black/30 pointer-events-none"></div>
       </section>
 
       {/* Services Slider */}
@@ -293,7 +438,7 @@ export default function Home() {
                 key={`${s.title}-${i}`}
                 className={`absolute inset-0 ${
                   isMounted && isTransitioning
-                    ? "transition-transform duration-700 ease-in-out  "
+                    ? "transition-transform duration-500 ease-in-out  "
                     : ""
                 }`}
                 style={{
@@ -314,10 +459,14 @@ export default function Home() {
                             "0 20px 50px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.1)",
                         }}
                       >
-                        <img
+                        <Image
                           src={s.img}
                           alt={s.title}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          loading={provideIdx === i ? "eager" : "lazy"}
+                          priority={provideIdx === i && i <= 2}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
                         />
                       </div>
                     </div>
@@ -426,6 +575,59 @@ export default function Home() {
 
       {/* Showcase */}
       <Showcase />
+
+      {/* Why Choose Us */}
+      <section className="py-8 md:py-10">
+        <div className="w-full px-6">
+          <div className="container mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold font-(--font-orbitron)" style={{ background: 'var(--vawe-bg-gradient)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Why Choose VAWE GlobalTech</h3>
+            <div className="mt-2 md:mt-3 h-1 w-24 rounded-full" style={{ background: 'var(--vawe-bg-gradient)' }} />
+            <div className="relative mt-4 md:mt-6 overflow-hidden py-2">
+            {/* single track with duplicated items for seamless loop (no gap) */}
+            <div className="vawe-marquee flex whitespace-nowrap will-change-transform">
+              {[...[
+                "All‑in‑one digital solutions",
+                "Expert team with years of experience",
+                "Fast turnaround",
+                "Dedicated support",
+              ], ...[
+                "All‑in‑one digital solutions",
+                "Expert team with years of experience",
+                "Fast turnaround",
+                "Dedicated support",
+              ], ...[
+                "All‑in‑one digital solutions",
+                "Expert team with years of experience",
+                "Fast turnaround",
+                "Dedicated support",
+              ]].map((point, idx) => {
+                const colors = ['var(--vawe-coral)', 'var(--vawe-teal)', 'var(--vawe-navy)', 'var(--vawe-beige)'];
+                const colorIndex = idx % 4;
+                return (
+                  <div key={point+idx} className="relative glass gradient-border rounded-xl px-4 py-3 pl-6 text-sm text-neutral-800 shrink-0 mr-4" style={{ borderColor: colors[colorIndex] }}>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full" style={{ backgroundColor: colors[colorIndex] }} />
+                    {point}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <style jsx global>{`
+            @keyframes vawe-marquee { 
+              from { transform: translateX(0); } 
+              to { transform: translateX(-50%); } 
+            }
+            .vawe-marquee { 
+              animation: vawe-marquee 20s linear infinite;
+              will-change: transform;
+            }
+            .vawe-marquee:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

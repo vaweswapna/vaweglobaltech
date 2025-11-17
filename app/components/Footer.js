@@ -1,116 +1,139 @@
 import Link from "next/link";
 import { Facebook, Linkedin, Twitter, Instagram, MessageCircle } from "lucide-react";
 export default function Footer() {
-  
   const year = new Date().getFullYear();
+
   return (
-    <footer className="mt-8 md:mt-12 w-full">
-    
-      <div className="w-full px-4 sm:px-6">
-        <div className="h-[2px] w-full grad-ring rounded-full opacity-50 mb-4 md:mb-6" />
-        <div className="container mx-auto glass gradient-border rounded-2xl px-4 sm:px-6 py-6 md:py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            <div>
-              <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-                <div className="relative flex-shrink-0">
-                  <div className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex items-center justify-center">
-                    <img
-                      src="/img1.jpg"
-                      alt="VAWE logo"
-                      className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 object-cover rounded-full border-2 border-[#00448a]"
-                    />
-                  </div>
-                </div>
-                <h4 className="font-(--font-orbitron) text-lg sm:text-xl font-semibold" style={{ color: 'var(--vawe-navy)' }}>
-                  <span 
-                    className="font-extrabold"
-                    style={{ 
-                      fontWeight: '900',
-                      textShadow: '0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,68,138,0.3), 0 2px 4px rgba(0,68,138,0.2)'
-                    }}
-                  >
-                    VAWE
-                  </span>{' '}GlobalTech
-                </h4>
-              </Link>
-              <p className="mt-2 sm:mt-3 text-sm sm:text-base text-neutral-700">
-                Building digital brilliance with a glassy, futuristic touch. We specialize in custom web and mobile applications, cloud-native platforms, and AI-powered solutions that transform businesses.
-              </p>
-              <p className="mt-2 text-xs sm:text-sm text-neutral-600">
-                From strategy and design to development and deployment, we deliver cutting-edge technology solutions that drive innovation and growth.
-              </p>
-            </div>
-            <div>
-                <h5 className="font-semibold mb-2 sm:mb-3 text-base sm:text-lg" style={{ color: 'var(--vawe-navy)' }}>Quick Links</h5>
-              <ul className="space-y-1.5 sm:space-y-2 text-neutral-700">
+    <footer className="mt-16 w-full bg-[#7ea9ad] text-slate-900">
+      <div className="flex w-full flex-col items-start gap-10 px-4 py-10 sm:flex-row sm:flex-wrap sm:justify-between sm:px-6 lg:flex-nowrap lg:items-center lg:gap-20 lg:px-12 lg:py-14">
+        <div className="flex w-full flex-col items-center gap-5 sm:w-[45%] lg:w-1/3">
+          <Link href="/" className="flex flex-col items-center gap-4">
+            <img
+              src="/logo2.jfif"
+              alt="VAWE logo"
+              className="h-28 w-28 rounded-full border-4 border-slate-900/30 object-cover shadow-lg shadow-slate-900/20"
+            />
+            <span className="text-2xl font-semibold tracking-wide text-slate-900">
+              VAWE GlobalTech
+            </span>
+          </Link>
+          <p className="text-center text-sm leading-relaxed text-slate-800/80">
+            Building future-ready digital products, intelligent platforms, and memorable
+            customer experiences for ambitious brands across the globe.
+          </p>
+        </div>
+
+        <div className="flex w-full flex-col gap-8 sm:w-[50%] lg:w-2/3">
+          <div className="flex flex-col gap-2">
+            <p className="text-sm uppercase tracking-[0.35em] text-slate-800/70">
+              Crafted For Forward Thinkers
+            </p>
+            <h3 className="text-3xl font-semibold text-slate-900">VAWE GlobalTech</h3>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 sm:gap-6">
+            <div className="col-span-1 space-y-3">
+              <h5 className="text-base font-semibold">Navigation</h5>
+              <ul className="space-y-2 text-sm text-slate-800/80">
                 <li>
-                  <Link href="/about" className="relative inline-block text-sm sm:text-base text-neutral-700 hover:text-[#00448a] transition-colors duration-200 group/link">
-                    <span className="relative z-10">About Us</span>
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#00448a] scale-x-0 group-hover/link:scale-x-100 transition-transform duration-200 origin-left" />
+                  <Link href="/" className="transition hover:text-slate-900">
+                    Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="relative inline-block text-sm sm:text-base text-neutral-700 hover:text-[#00448a] transition-colors duration-200 group/link">
-                    <span className="relative z-10">Products</span>
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#00448a] scale-x-0 group-hover/link:scale-x-100 transition-transform duration-200 origin-left" />
+                  <Link href="/#services" className="transition hover:text-slate-900">
+                    Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="relative inline-block text-sm sm:text-base text-neutral-700 hover:text-[#00448a] transition-colors duration-200 group/link">
-                    <span className="relative z-10">Contact</span>
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#00448a] scale-x-0 group-hover/link:scale-x-100 transition-transform duration-200 origin-left" />
+                  <Link href="/products" className="transition hover:text-slate-900">
+                    Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="relative inline-block text-sm sm:text-base text-neutral-700 hover:text-[#00448a] transition-colors duration-200 group/link">
-                    <span className="relative z-10">Services</span>
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#00448a] scale-x-0 group-hover/link:scale-x-100 transition-transform duration-200 origin-left" />
+                  <Link href="/contact" className="transition hover:text-slate-900">
+                    Contact
                   </Link>
                 </li>
               </ul>
             </div>
-            <div>
-                <h5 className="font-semibold mb-2 sm:mb-3 text-base sm:text-lg" style={{ color: 'var(--vawe-navy)' }}>Follow</h5>
-              <div className="flex items-center gap-2 sm:gap-3">
-                <Link href="#" aria-label="Facebook" className="p-1.5 sm:p-2 rounded-full text-[#1877F2] ring-1 ring-[#1877F2]/40 hover:bg-[#1877F2]/10 transition">
-                  <Facebook className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                </Link>
-                <Link href="#" aria-label="Twitter" className="p-1.5 sm:p-2 rounded-full text-[#1DA1F2] ring-1 ring-[#1DA1F2]/40 hover:bg-[#1DA1F2]/10 transition">
-                  <Twitter className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                </Link>
-                <Link href="#" aria-label="Instagram" className="p-1.5 sm:p-2 rounded-full text-white bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:brightness-110 transition">
-                  <Instagram className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                </Link>
-                <Link href="#" aria-label="LinkedIn" className="p-1.5 sm:p-2 rounded-full text-[#0A66C2] ring-1 ring-[#0A66C2]/40 hover:bg-[#0A66C2]/10 transition">
-                  <Linkedin className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                </Link>
-                <Link href="https://wa.me/918885103333" aria-label="WhatsApp" className="p-1.5 sm:p-2 rounded-full text-white bg-[#25D366] hover:bg-[#20BA5A] hover:brightness-110 transition shadow-md">
-                  <MessageCircle className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                </Link>
-              </div>
+
+            <div className="col-span-1 space-y-3">
+              <h5 className="text-base font-semibold">Support</h5>
+              <ul className="space-y-2 text-sm text-slate-800/80">
+                <li>
+                  <span className="block">Help Center</span>
+                </li>
+                <li>
+                  <span className="block">Refund Policy</span>
+                </li>
+                <li>
+                  <span className="block">FAQ&#39;s</span>
+                </li>
+                <li>
+                  <span className="block">Privacy Policy</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-span-1 space-y-3">
+              <h5 className="text-base font-semibold">Social</h5>
+              <ul className="space-y-3 text-sm text-slate-800/80">
+                <li>
+                  <Link
+                    href="https://www.facebook.com"
+                    className="flex items-center gap-3 transition hover:text-slate-900"
+                  >
+                    <Facebook className="h-4 w-4 text-[#1877F2]" />
+                    Facebook
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://www.linkedin.com"
+                    className="flex items-center gap-3 transition hover:text-slate-900"
+                  >
+                    <Linkedin className="h-4 w-4 text-[#0A66C2]" />
+                    LinkedIn
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://www.instagram.com"
+                    className="flex items-center gap-3 transition hover:text-slate-900"
+                  >
+                    <Instagram className="h-4 w-4 text-[#DD2A7B]" />
+                    Instagram
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://wa.me/918885103333"
+                    className="flex items-center gap-3 transition hover:text-slate-900"
+                  >
+                    <MessageCircle className="h-4 w-4 text-[#25D366]" />
+                    WhatsApp
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-neutral-700 text-xs sm:text-sm">
-            <p>© {year} VAWE GlobalTech. All rights reserved.</p>
-            <p>Powered by VAWE GlobalTech</p>
-          </div>
-          <div className="mt-6 md:mt-8 pb-2 text-center">
-            <span
-              className="text-2xl sm:text-3xl md:text-4xl"
-              style={{
-                fontFamily: '"Brush Script MT", "Segoe Script", "Lucida Handwriting", cursive',
-                letterSpacing: '0.04em',
-                color: '#00448a'
-              }}
-            >
-              VAWE GlobaTech
-            </span>
+        </div>
+      </div>
+
+      <div className="border-t border-slate-900/20 bg-[#779ea3]">
+        <div className="flex w-full flex-col gap-4 px-4 py-6 text-xs text-slate-800/80 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-12">
+          <p>Copyright © {year} VAWE GlobalTech</p>
+          <div className="flex flex-wrap items-center gap-6">
+            <span>Terms &amp; Conditions</span>
+            <span>Privacy Policy</span>
+            <Link href="#top" className="inline-flex items-center gap-1 transition hover:text-slate-900">
+              Back to top
+              <span aria-hidden="true">↑</span>
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
-
 }
-
-

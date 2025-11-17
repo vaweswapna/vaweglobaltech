@@ -29,7 +29,7 @@ export default function Institutes() {
           custom={0.05}
           className="mt-3 text-sm md:text-base text-neutral-800 max-w-3xl"
         >
-          VAWE Institute of Technical Training — Together For Success.
+         VAWE INSTITUTES is the group of VAWE . VAWE Institute of Technical Training — Together For Success.
         </motion.p>
 
           {/* Prominent link */}
